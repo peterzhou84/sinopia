@@ -22,6 +22,7 @@
               <div>
                 {{#if username}}
                 <p class="white no-bg navbar-text pad-right-10 inline-block">Hi {{username}}</p>
+                <button type="submit" class="btn btn-danger inline-block" data-toggle="modal" data-target="#changepwd-form" onclick="return false">ChangePassword</button>
                 <button type="submit" class="btn btn-danger inline-block js-userLogoutBtn">Logout</button>
                 {{else}}
                 <p class="white no-bg navbar-text pad-right-10 inline-block">&nbsp;</p>
@@ -44,6 +45,7 @@
               <form class="navbar-form navbar-right">
                 {{#if username}}
                 <p class="white no-bg pad-right-10 inline-block">Hi {{username}}</p>
+                <button type="submit" class="btn btn-danger inline-block" data-toggle="modal" data-target="#changepwd-form" onclick="return false">ChangePassword</button>
                 <button type="submit" class="btn btn-danger inline-block js-userLogoutBtn">Logout</button>
                 {{else}}
                 <button type="submit" class="btn btn-danger inline-block" data-toggle="modal" data-target="#login-form" onclick="return false">Login</button>
@@ -113,6 +115,38 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary">Log in</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="changepwd-form" tabindex="-1" role="dialog" aria-labelledby="changepwd-form-label" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h5 class="modal-title" id="changepwd-form-label">Welcome back</h5>
+          </div>
+          <form role="form" action="{{ baseUrl }}/-/changepwd" method="post" id="changepwd-form" autocomplete="off">
+            <div class="modal-body">
+              <input type='hidden' name="user" id="user" class="form-control" value="{{username}}">
+              <div class="form-group">
+                <label for="oldpwd" class="sr-only">Current Password</label>
+                <input name="oldpwd" id="oldpwd" class="form-control" placeholder="Current Password" type="password">
+              </div>
+              <div class="form-group">
+                <label for="newpwd" class="sr-only">Password</label>
+                <input name="newpwd" id="newpwd" class="form-control" placeholder="New Password" type="password">
+              </div>
+              <div class="form-group">
+                <label for="newpwd2" class="sr-only">Confirm Password</label>
+                <input name="newpwd2" id="newpwd2" class="form-control" placeholder="Confirm New Password" type="password">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary js-btn-changepwd-submit">OK</button>
             </div>
           </form>
         </div>
